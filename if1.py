@@ -25,10 +25,6 @@ def function(age):
   print(time)
   
 def main():
-    """
-    Эта функция вызывается автоматически при запуске скрипта в консоли
-    В ней надо заменить pass на ваш код
-    """
     print ('какой возраст?')
     age = int(input())
     function(age)
