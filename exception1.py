@@ -10,11 +10,15 @@
     
 """
 
-def ask_user():
-    """
-    Замените pass на ваш код
-    """
-    pass
-    
+def ask_user_brak(answer = ''):
+  while answer != 'Хорошо':
+    try:
+      print('Как дела?')
+      answer = input()
+    except KeyboardInterrupt:
+      print('Пока!')
+    finally:
+      break
+
 if __name__ == "__main__":
     ask_user()
