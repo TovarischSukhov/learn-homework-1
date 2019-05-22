@@ -12,11 +12,16 @@
     
 """
 
-def get_summ(num_one, num_two):
-    """
-    Замените pass на ваш код
-    """
-    pass
+def get_summ():
+  print('enter two numbers:')
+  n1 = input()
+  n2 = input()
+  try:
+    n1 = int(n1)
+    n2 = int(n2)
+    print('here is the summ:', n1 + n2)
+  except ValueError:
+    print('It`s not numbers!')
     
 if __name__ == "__main__":
     print(get_summ(2, 2))
