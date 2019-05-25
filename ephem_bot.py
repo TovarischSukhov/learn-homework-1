@@ -13,7 +13,9 @@
 
 """
 import logging
+import datetime
 
+import ephem
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 logging.basicConfig(format='%(name)s - %(levelname)s - %(message)s',
@@ -41,18 +43,27 @@ def talk_to_me(bot, update):
     user_text = update.message.text 
     print(user_text)
     update.message.reply_text(user_text)
- 
+
+def get_const_planet(bot, update):
+    text = '/planet'
+    print(text)
+    planets_list = [name for _0, _1, name in ephem._libastro.builtin_planets()]
+    planet = split(update.message.text)[1]
+    if planet in planets_list:
+      pl = ephem.planet(now.strftime("%Y/%m/%d"))
+      const = ephem.constellation(pl)
+      print(const)
+      update.message.reply_text(const)
 
 def main():
-    mybot = Updater("КЛЮЧ, КОТОРЫЙ НАМ ВЫДАЛ BotFather", request_kwargs=PROXY)
-    
+    #learn1_axl_bot
+    mybot = Updater("886440728:AAEWAxQ7haqJ3wjvQZJZe6Sv4Q2NUsLsC7Y", request_kwargs=PROXY)
     dp = mybot.dispatcher
     dp.add_handler(CommandHandler("start", greet_user))
     dp.add_handler(MessageHandler(Filters.text, talk_to_me))
+    dp.add_handler(CommandHandler("planet", get_const_planet))
     
     mybot.start_polling()
     mybot.idle()
        
-
-if __name__ == "__main__":
-    main()
+main()
