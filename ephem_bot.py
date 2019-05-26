@@ -14,8 +14,8 @@
 """
 import logging
 import datetime
-
 import ephem
+
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 logging.basicConfig(format='%(name)s - %(levelname)s - %(message)s',
@@ -38,17 +38,18 @@ def greet_user(bot, update):
     print(text)
     update.message.reply_text(text)
 
-
 def talk_to_me(bot, update):
     user_text = update.message.text 
     print(user_text)
     update.message.reply_text(user_text)
 
 def get_const_planet(bot, update):
-    text = '/planet'
+    text = update.message.text
+    planet = split(text)[1]
     print(text)
+    print(planet)
     planets_list = [name for _0, _1, name in ephem._libastro.builtin_planets()]
-    planet = split(update.message.text)[1]
+    
     if planet in planets_list:
       pl = ephem.planet(now.strftime("%Y/%m/%d"))
       const = ephem.constellation(pl)
