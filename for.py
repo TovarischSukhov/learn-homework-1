@@ -28,6 +28,7 @@ def main(classes):
     )
 
   print('All school avarage score:', sum(avgScore)/len(avgScore))
+  # равно ли среднее средних, общемк среднему? [2,3,2,2,2] и [5]
 
 if __name__ == "__main__":
     main()
