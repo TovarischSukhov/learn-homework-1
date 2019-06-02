@@ -48,7 +48,9 @@ def get_const_planet(bot, update):
     planet = split(text)[1]
     print(text)
     print(planet)
+    # у тебя ксть логгирование, давай логами, а не принтами
     planets_list = [name for _0, _1, name in ephem._libastro.builtin_planets()]
+    # сможешть объяснить эту строку?)
     
     if planet in planets_list:
       pl = ephem.planet(now.strftime("%Y/%m/%d"))
@@ -59,6 +61,8 @@ def get_const_planet(bot, update):
 def main():
     #learn1_axl_bot
     mybot = Updater("886440728:AAEWAxQ7haqJ3wjvQZJZe6Sv4Q2NUsLsC7Y", request_kwargs=PROXY)
+    # тебе гитхаб, наверное, уже скзазал, но коммитить ключи - плохо, так как по нему любой человек можкт получить
+    # доступ к твоему боту, обычно ключи выносят в файл secrets.py и добавляют его в .gitignore
     dp = mybot.dispatcher
     dp.add_handler(CommandHandler("start", greet_user))
     dp.add_handler(MessageHandler(Filters.text, talk_to_me))
